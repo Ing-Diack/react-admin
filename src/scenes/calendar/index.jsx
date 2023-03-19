@@ -107,7 +107,7 @@ return(
             select={handleDateClick}
             eventClick={handleEventClick}
             eventsSet={(events)=>setCurrentEvents(events)}
-            initialEvents={[
+            initialEvents={[ 
                { id:"1234" , title:"All-day event", date:"2023-03-16"},
                { id:"1235" , title:"timed event", date:"2023-03-28"}
             ]}

@@ -1,0 +1,51 @@
+<div className="shops">
+        <div className="shops__wrapper">
+            <h2 className="shops__title"> Shops Car </h2>
+
+            <div className="filter__widget-wrapper">
+                <div className="filter__widget-01">
+                    <select name="" id="">
+                        <option value="New">New</option>
+                        <option value="Popular">Popular</option>
+                        <option value="Upcoming">UpComing</option>
+                    </select>
+                </div>
+                <div className="filter__widget-02">
+                    <select name="" id="">
+                        <option value="Toyata">Toyota</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Audi">Audi</option>
+                    </select>
+                </div>
+            </div>
+            <div className="shops__car-list">
+                    <div className="car__item">
+                        <div className="car__item-top">
+                            <div className="car__item-tile">
+                                <h3>Nissan</h3>
+                                <span>{<FavoriteBorderIcon/>}</span>
+                            </div>
+                            <p>Category</p>
+                        </div>
+                        <div className="car__img">
+                            <img src={CardImg} alt="car" />
+                        </div>
+                        <div className="car__item-bottom">
+                            <div className="car__item-bottom-left">
+                                {<PersonOutlinedIcon/>
+                                <Typography>4</Typography>
+                                
+                                <p>{<RepeatOutlinedIcon/>}
+                                <Typography>
+                                    Manual
+                                </Typography>
+                                </p>
+                            </div>
+                            <p> $453/d</p>
+                        </div>                      
+                    </div>
+                   
+            </div>
+             
+        </div>
+      </div>

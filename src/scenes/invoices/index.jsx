@@ -3,29 +3,30 @@ import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataInvoices} from "../../data/mockData";
 import Header from "../../components/Header";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 
 const Invoice = ()=>{
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isNonMobile =useMediaQuery("(min-width:600)");
 
     const columns =[
         { field:"id", headerName:"ID"},
-        { field:"name", headerName:"Name",
-            flex :1 , cellClassName :"name-column-cell"
+        { field:"name", headerName:"Name",width:200,
+        cellClassName :"name-column-cell"
 
         },
         
         {field:"phone",headerName:"Phone Number",
-         type:"number",
-         flex:1
+         type:"number",width:150
+        
         },
-        {field:"email", headerName:"Email",
-         flex:1   
+        {field:"email", headerName:"Email",width:250
+         
         },
           {field:"cost",
          headerName:"Cost",
-         flex:1,
          renderCell:(params)=>{
             <Typography color={colors.greenAccent[500]}>
                 `${params.row.cost}`
@@ -42,13 +43,17 @@ const Invoice = ()=>{
         <Box m="20px">
              <Header title="Invoices"  subTitle="List of Invoices Balances"/>
              <Box m="40px 0 0 0" height="75vh"
+             display="grid"
+             gridTemplateColumns="repeat(12,1fr)"
+             gap="20px"
              sx={{"& .MuiDataGrid-root":{
                 border:"none"},
                 "& .MuiDataGrid-cell":{
                     borderBottom:"none"
                 },
                 "& .name-column--cell":{
-                    color:colors.greenAccent[300]
+                    color:colors.greenAccent[300],
+                    justifyContent:"center"
                 },
                 "& .MuiDataGrid-columnHeaders":{
                     backgroundColor:colors.blueAccent[700],
@@ -63,7 +68,8 @@ const Invoice = ()=>{
                 },
                "& .MuiCheckbox-root":{
                 color:`${colors.greenAccent[200]} !important`
-               }
+               },
+               "& >div":{gridColumn:isNonMobile? undefined : "span 12"}
             }}
              >
              <DataGrid

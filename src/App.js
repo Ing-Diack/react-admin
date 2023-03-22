@@ -16,6 +16,7 @@ import Bar from "./scenes/bar";
 import Pie from "./scenes/pie";
 import Lie from "./scenes/lie";
 import Geography from "./scenes/Geography";
+import Shops from "./scenes/shops";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/pie" element={<Pie/>} />
                 <Route path="/lie" element={<Lie/>} />
                 <Route path="/geography" element={<Geography/>} />
+                <Route path="/shops" element={<Shops/>} />
               </Routes>
             </main>
     </div>

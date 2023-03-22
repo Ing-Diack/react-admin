@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/react-admin/static/css/main.79161074.css",
+    "main.js": "/react-admin/static/js/main.93052154.js",
+    "static/media/car-01.png": "/react-admin/static/media/car-01.853892a453ff0f4cb988.png",
+    "static/media/car-05.png": "/react-admin/static/media/car-05.6381cf2bac4ffbec35e3.png",
+    "static/media/car-04.png": "/react-admin/static/media/car-04.2e4cd8463e585fcad69f.png",
+    "static/media/car-06.png": "/react-admin/static/media/car-06.487847d405ad076ea08d.png",
+    "static/media/car-02.png": "/react-admin/static/media/car-02.afc5836a441bc5fc59ec.png",
+    "static/media/car-03.png": "/react-admin/static/media/car-03.65682e78fe239b4a6992.png",
+    "index.html": "/react-admin/index.html",
+    "main.79161074.css.map": "/react-admin/static/css/main.79161074.css.map",
+    "main.93052154.js.map": "/react-admin/static/js/main.93052154.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79161074.css",
+    "static/js/main.93052154.js"
+  ]
+}

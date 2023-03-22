@@ -8,7 +8,7 @@ const StatBox = ({title,subtitle,icon,progress,increase})=>{
     return(
         <Box width="100%" m="0 20px">
             <Box display="flex" justifyContent="space-between">
-                <Box>
+                <Box >
                 {icon}
                 <Typography 
                 variant="h5" 
@@ -23,7 +23,7 @@ const StatBox = ({title,subtitle,icon,progress,increase})=>{
                 </Box>
                 </Box>
 
-                <Box display="flex" justifyContent="space-between" mt="2px">
+                <Box display="flex" justifyContent="space-between" mt="4px">
 
                     <Typography 
                     variant="h6"

@@ -15,12 +15,14 @@ import {
 } from "@mui/material";
 import Header from "../../components/Header";
 import { tokens } from "../../theme";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 
 const Calendar =()=>{
     const theme= useTheme();
     const colors = tokens(theme.palette.mode);
     const [currentEvents, setCurrentEvents] = useState([]);
+    const isNonMobile = useMediaQuery("(min-width:600)");
 
     const handleDateClick =(selected)=>{
         const title = prompt("Please enter a new title for your event ");

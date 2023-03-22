@@ -12,15 +12,19 @@ import GeographyChart from "../../components/GeographyChart";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isNonMediaSmall = useMediaQuery("(min-width:600px)");
+
 
   return (
     <Box m="20px">
       {/* HEADER */}
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb="15px">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
 
         <Box>
@@ -28,9 +32,9 @@ const Dashboard = () => {
             sx={{
               backgroundColor: colors.blueAccent[700],
               color: colors.grey[100],
-              fontSize: "14px",
+              fontSize: "10px",
               fontWeight: "bold",
-              padding: "10px 20px",
+              padding: "5px 10px",
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -42,16 +46,21 @@ const Dashboard = () => {
       {/* GRID & CHARTS */}
       <Box
         display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
         gridAutoRows="140px"
         gap="20px"
+        gridTemplateColumns="repeat(12 , minmax(0, 1fr))"
+        sx={{
+          "& > div":{gridColumn: isNonMediaSmall ? undefined:"span 12"},
+  
+       }}
+ 
       >
         {/* ROW 1 */}
         <Box
           gridColumn="span 3"
           backgroundColor={colors.primary[400]}
-          display="flex"
           alignItems="center"
+          display="flex"
           justifyContent="center"
         >
           <StatBox
@@ -88,8 +97,8 @@ const Dashboard = () => {
         <Box
           gridColumn="span 3"
           backgroundColor={colors.primary[400]}
-          display="flex"
           alignItems="center"
+          display="flex"
           justifyContent="center"
         >
           <StatBox

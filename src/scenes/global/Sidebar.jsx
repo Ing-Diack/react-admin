@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import {Menu,MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
-import { Box,IconButton, Typography, useTheme } from "@mui/material";
+import { Box,IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { tokens } from "../../theme";
 import  HomeOutlinedIcon  from "@mui/icons-material/HomeOutlined";
@@ -15,6 +15,8 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
+
 
 
 
@@ -24,9 +26,13 @@ const Item =({title,to,icon,selected,setSelected})=>{
   const colors = tokens(theme.palette.mode);
   const navigate=  useNavigate();
 
+
   const handleClick =()=>{
         setSelected(title);
-        navigate(to);}
+        navigate(to);
+        
+      };
+        
 return( 
   <MenuItem
   active={selected===title}
@@ -45,6 +51,22 @@ const SideBar = ()=>{
     const colors = tokens(theme.palette.mode);
     const {collapsed,collapseSidebar}=useProSidebar();
     const [selected,setSelected] = useState("Dashboard");
+    const [width,setWidth]=useState("");
+
+    const getSize=()=>{
+      setWidth(window.innerWidth);
+    }
+    useEffect(() => {
+     window.addEventListener('resize',getSize);
+     if(width<600){
+      collapseSidebar(true);
+     }else{
+      collapseSidebar(false);
+     }
+     return ()=>{
+      window.removeEventListener('resize',getSize)
+     }
+    }, [window.innerWidth]);
 
     return ( 
      
@@ -52,14 +74,14 @@ const SideBar = ()=>{
                 <Sidebar 
                 style={{height:"100%"}}
                 backgroundColor={colors.greenAccent[700]}
+                width="220px"
                 
                     >
                 <Menu  iconShape="square" 
                 menuItemStyles={{
                           button: {
                                 '&:hover': {
-                                        backgroundColor:colors.primary[400],
-                                        color: '#1b4332',
+                                        backgroundColor:colors.primary[700],
                                         borderRadius:"10px"
                                       },
                             },
@@ -107,20 +129,29 @@ const SideBar = ()=>{
                       </Box>
                     )}
                     {/**MENUS ITEMS */}
-                    <Box paddingLeft={collapsed ? undefined : "10%"}>
+                    <Box paddingLeft={collapsed ? undefined : "3%"}>
                       <Item 
                       title="Dashboard"
                       to="/"
                       icon={<HomeOutlinedIcon/>}
                       selected={selected}
                       setSelected={setSelected}
-                      />
+                      /> 
+                      
+                      <Item 
+                        title="Shops"
+                        to="/shops"
+                        icon={<TimeToLeaveIcon/>}
+                        selected={selected}
+                        setSelected={setSelected}
+                        />
                       <Typography
                       variant="h6"
                       fontWeight="bold"
                       color={colors.grey[300]}
                       sx={{ m:"10px 0 5px 20px"}}
                       >
+                       
                         Data
                       </Typography>
                       <Item 

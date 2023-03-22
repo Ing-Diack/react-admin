@@ -3,46 +3,53 @@ import { DataGrid,GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts} from "../../data/mockData";
 import Header from "../../components/Header";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 
 const Contact = ()=>{
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const isNonMobile =useMediaQuery("(min-width:600)");
+
 
     const columns =[
-        { field:"id", headerName:"ID", flex:0.5},
+        { field:"id", headerName:"ID",width:50},
         {field:"registrarId", headerName:"Registrar ID"},
-        { field:"name", headerName:"Name",
-            flex :1 , cellClassName :"name-column-cell"
+        { field:"name", headerName:"Name",width:150,
+         cellClassName :"name-column-cell"
 
         },
         {field:"age", headerName:"Age",
             type:"number",
             headerAlign:"left",
-            align:"left"
+            align:"left",width:20
+           
         },
         {field:"phone",headerName:"Phone Number",
-         type:"number",
-         flex:1
+         type:"number"
+        
         },
-        {field:"email", headerName:"Email",
-         flex:1   
+        {field:"email", headerName:"Email",width:200
+          
         },
         {field:"address",
-         headerName:"Address",
-         flex:1},
+         headerName:"Address",width:250
+         },
           {field:"city",
          headerName:"City",
-         flex:1},
+         },
           {field:"zipCode",
-         headerName:"ZipCode",
-         flex:1},
+         headerName:"ZipCode"
+         },
     ]
 
     return(
         <Box m="20px">
              <Header title="Contacts"  subTitle="List of Contacts for future Reference"/>
              <Box m="40px 0 0 0" height="75vh"
+             display="grid"
+             gridTemplateColumns="repeat(12,1fr)"
+             gap="20px"
              sx={{"& .MuiDataGrid-root":{
                 border:"none"},
                 "& .MuiDataGrid-cell":{
@@ -64,7 +71,8 @@ const Contact = ()=>{
                 },
                 "& .MuiDataGrid-toolbarContainer .MuiButton-text":{
                     color:`${colors.grey[100]} !important`
-                }
+                },
+                "& >div":{gridColumn:isNonMobile? undefined:"span 12"}
             }}
              >
 
